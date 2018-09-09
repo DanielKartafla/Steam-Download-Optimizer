@@ -5,8 +5,97 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SteamDownloadOptimizerWpf"
         mc:Ignorable="d"
-        Title="Steam Download Optimizer" Height="450" Width="800">
-    <Grid>
-        
+        Title="Steam Download Optimizer" Height="517.593" Width="890.741">
+  <Grid >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="5">
+      <Grid Background="LavenderBlush">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="125"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="tbSteamappsFolder" Grid.Row="0" Grid.Column="0"
+                 Margin="5" ToolTip="The path to your steamapps folder"/>
+        <Button Name="btSelectSteamappsFolder" Grid.Row="0" Grid.Column="1" Margin="5" 
+                Content="Select folder" ToolTip="Select a folder as your steamapps folder"/>
+      </Grid>
+    </Border>
+
+    <Grid Grid.Row="1" Grid.Column="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="7*"/>
+        <ColumnDefinition Width="3*"/>
+      </Grid.ColumnDefinitions>
+      
+      <ListView Name="lvGames" Grid.Row="0" Grid.Column="0" Margin="5">
+        <ListView.View>
+          <GridView>
+            <GridViewColumn Header="Game" Width="Auto"></GridViewColumn>
+            <GridViewColumn Header="Setting" Width="Auto"></GridViewColumn>
+          </GridView>
+        </ListView.View>
+      </ListView>
+      
+      <Grid Grid.Row="0" Grid.Column="1">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="50"/>
+          <RowDefinition Height="45"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="45"/>
+          <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Name="lbAutoOptimize" Content="Auto-Optimize" HorizontalAlignment="Center" 
+               FontSize="20" Margin="5"/>
+        <Button Grid.Row="1" Margin="5" Name="btConfigOnline" Content="Configure online features"
+                ToolTip="Configure what Steam features count as online games."/>
+        <Grid Grid.Row="2">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+          </Grid.ColumnDefinitions>
+          <Label Content="Always" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center" ToolTip="Always update these Steam games, even while in-game."/>
+          <Label Content="Default" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center" ToolTip="Update according to your system-wide Steam settings."/>
+          <Label Content="Never" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center" ToolTip="Never update these Steam games while in-game."/>
+
+          <Label Content="Online" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center" ToolTip="Games with online functionality"/>
+          <Label Content="Offline" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" 
+                 VerticalAlignment="Center" ToolTip="Games without online functionality"/>
+
+          <RadioButton Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Name="rbOnlineAlways" GroupName="rgOnline"/>
+          <RadioButton Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Name="rbOnlineDefault" GroupName="rgOnline"/>
+          <RadioButton Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Name="rbOnlineNever" GroupName="rgOnline" IsChecked="True"/>
+
+          <RadioButton Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Name="rbOfflineAlways" GroupName="rgOffline"/>
+          <RadioButton Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Name="rbOfflineDefault" GroupName="rgOffline" IsChecked="True"/>
+          <RadioButton Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Name="rbOfflineNever" GroupName="rgOffline"/>
+        </Grid>
+        <Button Grid.Row="3" Margin="5" Name="btAutoConfig" Content="Auto-Config" 
+                ToolTip="Automatically set your preferences declared above on the games to the left. This does not update your steam settings yet."/>
+        <Button Grid.Row="4" Margin="5" Name="btUpdateSettings" Content="Update Steam settings"
+                ToolTip="Update your Steam's individual game settings according to the preferences declared on the left."/>
+      </Grid>
     </Grid>
+    
+  </Grid>
 </Window>
